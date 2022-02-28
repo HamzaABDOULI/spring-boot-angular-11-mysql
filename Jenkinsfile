@@ -19,11 +19,17 @@ pipeline {
              }
             }
         }
+
+        stage('Archive') {
+            bat 'tar.exe cf dist.zip dist'
+            archive 'dist.zip'
+    }
+
       }
 
       post {
         always {
-            archiveArtifacts artifacts: '**/**', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '**/*.jar, onlyIfSuccessful: true
         }
     }
 }
