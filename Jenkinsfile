@@ -10,6 +10,7 @@ pipeline {
 
         stage('Initialize'){
             steps{
+                echo 'Initialize'
                 echo "PATH = ${M2_HOME}/bin:${PATH}"
             }
         }
