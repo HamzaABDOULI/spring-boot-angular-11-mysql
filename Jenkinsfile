@@ -2,17 +2,12 @@ pipeline {
     agent any
 
     tools {
-        maven "M2_HOME"
-        jdk "JAVA_HOME"
+        maven "C:\Program Files\apache-maven-3.8.4"
+        jdk "C:\Program Files\Java\jdk1.8.0_202"
     }
 
     stages {
-        stage('Initialize'){
-            steps{
-                echo "PATH = ${PATH}"
-                echo "M2_HOME = ${M2_HOME}"
-            }
-        }
+        
 
         stage('Build SpringBoot Project') {
             steps {
