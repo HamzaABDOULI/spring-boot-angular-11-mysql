@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Hello Hammmza'
+                dir('spring-boot-angular-11-mysql'){
+                sh 'mvn clean install'
+    }
             }
         }
     }
