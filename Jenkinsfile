@@ -5,8 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Hello Hammmza'
-                dir('spring-boot-server'){
-                echo 'hiiiiiiii'
+                dir('angular-11-client'){
+                    sh 'npm install'
+                
              }
             }
         }
