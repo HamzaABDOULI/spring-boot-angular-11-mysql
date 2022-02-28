@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Hello Hammmza'
-                dir("spring-boot-server"){
+                dir('spring-boot-angular-11-mysql/spring-boot-server/'){
                     sh 'mvn clean install'
              }
             }
