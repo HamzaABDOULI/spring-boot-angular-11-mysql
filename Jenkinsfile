@@ -1,14 +1,6 @@
 pipeline {
     agent any
-
-    tools {
-        maven "C:\Program Files\apache-maven-3.8.4"
-        jdk "C:\Program Files\Java\jdk1.8.0_202"
-    }
-
     stages {
-        
-
         stage('Build SpringBoot Project') {
             steps {
                 echo 'Start Building the SpringBoot project'
