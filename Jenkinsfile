@@ -25,7 +25,7 @@ pipeline {
 
       post {
         always {
-            archiveArtifacts artifacts: '**/*.jar, **/dist.zip', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
         }
     }
 }
