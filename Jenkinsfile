@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Hello Hammmza'
                 dir('spring-boot-server'){
-                sh 'mkdir hi'
+                echo 'hiiiiiiii'
              }
             }
         }
