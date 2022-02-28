@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Start Building the SpringBoot project'
                 dir('spring-boot-server'){
-                    sh 'mvn install clean' 
+                    bat 'mvn install clean' 
              }
             }
         }         
