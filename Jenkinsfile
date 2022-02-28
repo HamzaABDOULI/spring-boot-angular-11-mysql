@@ -21,21 +21,11 @@ pipeline {
             }
         }
 
-       // stage('Archive') {
-          //  steps {
-              //  echo 'Archive dist folder'
-              //  dir('angular-11-client'){
-               //     bat 'tar.exe cf dist.zip dist'
-                    //archive 'dist.zip'
-              //  }
-          //  }          
-      //  }
-
       }
 
       post {
         always {
-            archiveArtifacts artifacts: '**/*.jar, **/dist.zip', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '**/*.jar', onlyIfSuccessful: true
         }
     }
 }
