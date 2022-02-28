@@ -23,7 +23,7 @@ pipeline {
 
       post {
         always {
-            archiveArtifacts artifacts: 'spring-boot-server/*.jar', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '**/*.jar', onlyIfSuccessful: true
         }
     }
 }
