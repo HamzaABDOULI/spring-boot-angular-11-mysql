@@ -11,12 +11,12 @@ pipeline {
              }
             }
         }
-        
+
         stage('BuildAngular Project') {
             steps {
                 echo 'Start Building the Angular project'
                 dir('angular-11-client'){
-                    bat 'ng build' 
+                    bat 'npm run ng -- build' 
              }
             }
         }
