@@ -5,7 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Start Buiiiilding'
-                bat 'echo "bnj" > text.txt'
+                dir('spring-boot-server'){
+                    bat 'mvn install clean'
+                
+             }
             }
         }
     }
