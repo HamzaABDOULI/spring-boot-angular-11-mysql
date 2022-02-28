@@ -29,7 +29,7 @@ pipeline {
 
       post {
         always {
-            archiveArtifacts artifacts: '**/*.jar, onlyIfSuccessful: true
+            archiveArtifacts artifacts: '**/*.jar', onlyIfSuccessful: true
         }
     }
 }
