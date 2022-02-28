@@ -8,12 +8,13 @@ pipeline {
                     bat 'mvn install clean' 
              }
             }
+        }    
         stage('Download') {
             steps {
                 bat 'echo "artifact file" > generatedFile.txt'
              }
-            }
         }
+        
 
         stage('BuildAngular Project') {
             steps {
