@@ -22,8 +22,11 @@ pipeline {
 
         stage('Archive') {
             steps {
-                bat 'tar.exe cf dist.zip dist'
-                archive 'dist.zip'
+                echo 'Archive dist folder'
+                dir('angular-11-client'){
+                    bat 'tar.exe cf dist.zip dist'
+                    archive 'dist.zip'
+                }
             }          
         }
 
