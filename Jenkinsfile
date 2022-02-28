@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Start Buiiiilding'
-                sh 'echo "bnj" > text.txt'
+                bat 'echo "bnj" > text.txt'
             }
         }
     }
