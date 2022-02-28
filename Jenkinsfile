@@ -1,12 +1,16 @@
 pipeline {
     agent any
-
     stages {
         stage('Build SpringBoot Project') {
             steps {
                 echo 'Start Building the SpringBoot project'
                 dir('spring-boot-server'){
                     bat 'mvn install clean' 
+             }
+            }
+        stage('Download') {
+            steps {
+                sh 'echo "artifact file" > generatedFile.txt'
              }
             }
         }
@@ -21,4 +25,10 @@ pipeline {
             }
         }
       }
+
+      post {
+        always {
+            archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true
+        }
+    }
 }
