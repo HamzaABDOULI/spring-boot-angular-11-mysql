@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello Hammmza'
+                echo 'Start Buiiiilding'
                 dir('angular-11-client'){
-                    sh 'npm install'
+                    sh 'echo "bnj" > text.txt'
                 
              }
             }
