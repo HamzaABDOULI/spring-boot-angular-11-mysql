@@ -11,8 +11,7 @@ pipeline {
              }
             }
         }
-
-    stages {
+        
         stage('BuildAngular Project') {
             steps {
                 echo 'Start Building the Angular project'
@@ -22,5 +21,4 @@ pipeline {
             }
         }
       }
-    }
 }
