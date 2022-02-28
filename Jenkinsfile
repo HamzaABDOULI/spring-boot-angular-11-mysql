@@ -15,6 +15,7 @@ pipeline {
             steps {
                 echo 'Start Building the Angular project'
                 dir('angular-11-client'){
+                    bat 'npm install'
                     bat 'npm run ng -- build' 
              }
             }
