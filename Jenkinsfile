@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                echo 'Hello Hammmza'
+                dir('spring-boot-server'){
+                sh 'mkdir hi'
+             }
             }
         }
     }
