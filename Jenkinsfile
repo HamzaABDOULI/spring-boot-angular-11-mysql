@@ -10,7 +10,7 @@ pipeline {
             }
         stage('Download') {
             steps {
-                sh 'echo "artifact file" > generatedFile.txt'
+                bat 'echo "artifact file" > generatedFile.txt'
              }
             }
         }
