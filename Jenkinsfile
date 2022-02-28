@@ -16,14 +16,16 @@ pipeline {
                 dir('angular-11-client'){
                     bat 'npm install'
                     bat 'npm run ng -- build' 
-             }
+                }
             }
         }
 
         stage('Archive') {
-            bat 'tar.exe cf dist.zip dist'
-            archive 'dist.zip'
-    }
+            steps {
+                bat 'tar.exe cf dist.zip dist'
+                archive 'dist.zip'
+            }          
+        }
 
       }
 
