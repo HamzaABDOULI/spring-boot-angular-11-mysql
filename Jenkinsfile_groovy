@@ -3,7 +3,7 @@ node{
     properties([
     buildDiscarder(
         logRotator(
-            numToKeepStr: '20'
+            numToKeepStr: '30'
             )),
     ])
 
@@ -17,14 +17,14 @@ node{
     stage ('Build and Package' ) {
         dir('spring-boot-server'){
             if (fileExists()) {
-                    def readcounter =    readFile(file: 'version.txt')
+                    def readcounter = readFile(file: 'version.txt')
                     readcounter = readcounter.toInteger() +1
                     def version= "Version" + readcounter
                     println(version)
                     bat 'mvn package -Dartifactversion=' + "${version}"
-                    writeFile(file: 'version.txt', text:readcounter.toString())
+                    writeFile(file: 'version.txt', text: readcounter.toString())
                 } 
-            else {
+                else {
                     currentBuild.result = "FAILURE" 
                 } 
                     echo "Build and Package Completed" 
@@ -32,7 +32,11 @@ node{
     }
        
         
- 
+    stage"Build SpringBoot Project"
+    echo "========^^^^^^ Start Building the SpringBoot project ^^^^^^========"
+    dir('spring-boot-server'){
+        bat "mvn install clean" 
+    }
 
     stage"BuildAngular Project"
     echo "========^^^^^^ Start Building the Angular project ^^^^^^========"
