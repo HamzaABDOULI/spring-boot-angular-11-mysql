@@ -52,8 +52,8 @@
 	</dependencies>
 
 	<build>
-		<finalName>spring-boot-angular-11-mysql-${artifactversion}</finalName>
-		<!--<finalName>myProjectName</finalName> -->
+	<finalName>spring-boot-angular-11-mysql-${artifactversion}</finalName>
+    <!--<finalName>myProjectName</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
