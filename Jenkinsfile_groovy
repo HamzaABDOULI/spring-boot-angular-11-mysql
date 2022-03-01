@@ -11,11 +11,23 @@ node{
     //def data = "Version" + counter
     //writeFile(file: 'version.txt', text: counter.toString())
 
-    
-
-
     stage"========^^^^^^ Clone sources ^^^^^^========"
     git url: 'https://github.com/HamzaABDOULI/spring-boot-angular-11-mysql.git'
+
+    stage ('Build and Package' ) {
+        if (fileExists()) {
+            def readcounter =    readFile(file: 'version.txt')
+            readcounter = readcounter.toInteger() +1
+            def version= "Version" + readcounter
+            println(version)
+            bat 'mvn package -Dartifactversion=' + "${version}"
+            writeFile(file: 'version.txt', text:readcounter.toString())
+        } 
+        else {
+            currentBuild.result = "FAILURE" 
+        } 
+            echo "Build and Package Completed" 
+    } 
         
     stage"Build SpringBoot Project"
     echo "========^^^^^^ Start Building the SpringBoot project ^^^^^^========"
