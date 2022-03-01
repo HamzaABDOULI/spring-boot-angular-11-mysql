@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     options {
-        echo 'Delete Old Builds'
+        echo '========^^^^^^ Delete Old Builds ^^^^^^========'
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
   }
 
@@ -14,13 +14,13 @@ pipeline {
 
         stage('Initialize'){
             steps{
-                echo 'Initialize'
+                echo '========^^^^^^ Initialize ^^^^^^========'
                 echo "PATH = ${M2_HOME}/bin:${PATH}"
             }
         }
         stage('Build SpringBoot Project') {
             steps {
-                echo 'Start Building the SpringBoot project'
+                echo '========^^^^^^ Start Building the SpringBoot project ^^^^^^========'
                 dir('spring-boot-server'){
                     bat 'mvn install clean' 
              }
@@ -29,7 +29,7 @@ pipeline {
 
         stage('BuildAngular Project') {
             steps {
-                echo 'Start Building the Angular project'
+                echo '========^^^^^^ Start Building the Angular project ^^^^^^========'
                 dir('angular-11-client'){
                     bat 'npm install'
                     bat 'npm run ng -- build'
@@ -42,6 +42,7 @@ pipeline {
 
       post {
         always {
+            echo '========^^^^^^ Archive Artifacts ^^^^^^========'
             archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
         }
     }
