@@ -2,13 +2,17 @@ node('Windows') {
     if (fileExists('C:/Program Files/Jenkins/jenkins.exe') {
         bat 'C:/Program Files/Jenkins/jenkins.exe'
         stage"Build SpringBoot Project"
+
         echo "Start Building the SpringBoot project"
+
         dir('spring-boot-server'){
             bat 'mvn install clean' 
         }
 
         stage"BuildAngular Project"
+
         echo "Start Building the Angular project "
+
         dir('angular-11-client'){
             bat 'npm install'
             bat 'npm run ng -- build'
@@ -16,6 +20,7 @@ node('Windows') {
         }
 
         stage "Archive build output"
+        
         archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
 
     }
