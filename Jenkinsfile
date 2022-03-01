@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     options {
-        echo '========^^^^^^ Delete Old Builds ^^^^^^========'
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
   }
 
