@@ -18,6 +18,7 @@
 		<java.version>1.8</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
  		<maven.compiler.target>1.8</maven.compiler.target>
+		 <artifactversion>Version0</artifactversion>
 	</properties>
 
 	<dependencies>
@@ -51,6 +52,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>spring-boot-angular-11-mysql-${artifactversion}</finalName>
+		<!--<finalName>myProjectName</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
