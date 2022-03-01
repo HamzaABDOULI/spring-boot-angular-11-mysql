@@ -1,15 +1,15 @@
 node{
-        stage"=====^^^^ Clone sources ^^^^====="
+        stage"========^^^^^^ Clone sources ^^^^^^========"
         git url: 'https://github.com/HamzaABDOULI/spring-boot-angular-11-mysql.git'
         
         stage"Build SpringBoot Project"
-        echo "=====^^^^ Start Building the SpringBoot project ^^^^====="
+        echo "========^^^^^^ Start Building the SpringBoot project ^^^^^^========"
         dir('spring-boot-server'){
             bat "mvn install clean" 
         }
 
         stage"BuildAngular Project"
-        echo "=====^^^^ Start Building the Angular project ^^^^====="
+        echo "========^^^^^^ Start Building the Angular project ^^^^^^========"
         dir('angular-11-client'){
             bat 'npm install'
             bat 'npm run ng -- build'
