@@ -11,7 +11,7 @@ node{
     //def data = "Version" + counter
     //writeFile(file: 'version.txt', text: counter.toString())
 
-    stage"========^^^^^^ Clone sources ^^^^^^========"
+    stage"Clone sources"
     git url: 'https://github.com/HamzaABDOULI/spring-boot-angular-11-mysql.git'
 
     stage ('Build and Package' ) {
@@ -22,7 +22,7 @@ node{
                     def version= "Version" + readcounter
                     println(version)
                     //bat "mvn install clean" 
-                    bat 'mvn package -Dartifactversion=' + "${version}"
+                    bat 'mvn package -D artifactversion=' + "${version}"
                     writeFile(file: 'version.txt', text: readcounter.toString())
                 } 
                 else {
