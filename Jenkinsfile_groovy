@@ -1,6 +1,4 @@
 node('Windows') {
-    if (fileExists('C:/Program Files/Jenkins/jenkins.exe') {
-        bat 'C:/Program Files/Jenkins/jenkins.exe'
         stage"Build SpringBoot Project"
 
         echo "Start Building the SpringBoot project"
@@ -22,5 +20,4 @@ node('Windows') {
         stage "Archive build output"
         
         archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
-    }
-    )
+}
