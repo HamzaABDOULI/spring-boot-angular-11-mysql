@@ -24,4 +24,3 @@ node('Windows') {
         archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
     }
     )
-}
