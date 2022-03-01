@@ -2,8 +2,13 @@ pipeline {
     agent any
 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-  }
+        buildDiscarder(
+            logRotator(
+                daysToKeepStr: '15',
+                // artifacts are kept for days
+            )
+        )
+    }
 
     tools {
         maven "maven3.8.4"
