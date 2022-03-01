@@ -1,24 +1,5 @@
 pipeline {
     agent any
-
-    options {
-        buildDiscarder(BuildHistoryManager([
-            [
-                conditions: [
-                    BuildResult(matchFailure: true)
-                ],
-                matchAtMost: 1,
-                continueAfterMatch: false
-            ],
-            [
-                conditions: [
-                    BuildResult(matchAborted: true, matchFailure: true, matchUnstable: true)
-                ],
-                actions: [DeleteBuild()]
-            ]
-        ]))
-    }
-
     tools {
         maven "maven3.8.4"
         jdk "jdk1.8"
