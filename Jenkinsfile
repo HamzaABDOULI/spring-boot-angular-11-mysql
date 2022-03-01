@@ -27,23 +27,5 @@ pipeline {
             }
         }         
 
-        stage('BuildAngular Project') {
-            steps {
-                echo '========^^^^^^ Start Building the Angular project ^^^^^^========'
-                dir('angular-11-client'){
-                    bat 'npm install'
-                    bat 'npm run ng -- build'
-                    bat 'tar.exe cf dist.zip dist' 
-                }
-            }
-        }
 
-      }
-
-      post {
-        always {
-            echo '========^^^^^^ Archive Artifacts ^^^^^^========'
-            archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
-        }
-    }
 }
