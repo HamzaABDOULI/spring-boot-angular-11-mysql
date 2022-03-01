@@ -16,7 +16,7 @@ node{
 
     stage ('Build and Package' ) {
         dir('spring-boot-server'){
-            if (fileExists()) {
+            if (fileExists('C:/ProgramData/Jenkins/.jenkins/workspace/Angular-SpringBoot-Groovy/version.txt')) {
                     def readcounter =    readFile(file: 'version.txt')
                     readcounter = readcounter.toInteger() +1
                     def version= "Version" + readcounter
@@ -24,7 +24,7 @@ node{
                     bat 'mvn package -Dartifactversion=' + "${version}"
                     writeFile(file: 'version.txt', text:readcounter.toString())
                 } 
-                else {
+            else {
                     currentBuild.result = "FAILURE" 
                 } 
                     echo "Build and Package Completed" 
