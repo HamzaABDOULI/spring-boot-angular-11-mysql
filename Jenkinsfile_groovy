@@ -21,8 +21,8 @@ node{
                     readcounter = readcounter.toInteger() +1
                     def version= "Version" + readcounter
                     println(version)
-                    bat "mvn install clean" 
-                    //bat 'mvn package -Dartifactversion=' + "${version}"
+                    //bat "mvn install clean" 
+                    bat 'mvn package -Dartifactversion=' + "${version}"
                     writeFile(file: 'version.txt', text: readcounter.toString())
                 } 
                 else {
