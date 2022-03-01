@@ -1,4 +1,4 @@
-node('Windows') {
+node{
         stage"Build SpringBoot Project"
 
         echo "Start Building the SpringBoot project"
