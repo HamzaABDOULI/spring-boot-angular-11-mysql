@@ -1,7 +1,10 @@
 node{
 
     properties([
-    buildDiscarder(logRotator(numToKeepStr: '5')),
+    buildDiscarder(
+        logRotator(
+            numToKeepStr: '20'
+            )),
     ])
 
     stage"========^^^^^^ Clone sources ^^^^^^========"
