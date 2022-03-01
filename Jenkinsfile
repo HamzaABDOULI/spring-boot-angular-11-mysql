@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     options {
-    buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
+        echo 'Delete Old Builds'
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
   }
-  
+
     tools {
         maven "maven3.8.4"
         jdk "jdk1.8"
