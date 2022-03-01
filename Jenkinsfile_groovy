@@ -1,0 +1,27 @@
+node('Linux') {
+    if (fileExists('/usr/local/bin/jenkins.sh') {
+        sh '/usr/local/bin/jenkins.sh'
+    }
+}
+node('Windows') {
+    if (fileExists('C:/Program Files/Jenkins/jenkins.exe') {
+        bat 'C:/Program Files/Jenkins/jenkins.exe'
+        stage"Build SpringBoot Project"
+        echo "Start Building the SpringBoot project"
+        dir('spring-boot-server'){
+            bat 'mvn install clean' 
+        }
+
+        stage"BuildAngular Project"
+        echo "Start Building the Angular project "
+        dir('angular-11-client'){
+            bat 'npm install'
+            bat 'npm run ng -- build'
+            bat 'tar.exe cf dist.zip dist' 
+        }
+
+        stage "Archive build output"
+        archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
+
+    }
+}
