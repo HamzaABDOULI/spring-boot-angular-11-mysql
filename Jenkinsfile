@@ -1,11 +1,14 @@
 pipeline {
     agent any
 
+    options {
+    buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
+  }
+  
     tools {
         maven "maven3.8.4"
         jdk "jdk1.8"
     }
-
     stages {
 
         stage('Initialize'){
