@@ -4,8 +4,7 @@ pipeline {
     options {
         buildDiscarder(
             logRotator(
-                daysToKeepStr: '15',
-                // artifacts are kept for days
+                daysToKeepStr: '20',
             )
         )
     }
@@ -31,9 +30,22 @@ pipeline {
             }
         }         
 
-
+        stage('BuildAngular Project') {
+            steps {
+                echo '========^^^^^^ Start Building the Angular project ^^^^^^========'
+                dir('angular-11-client'){
+                    bat 'npm install'
+                    bat 'npm run ng -- build'
+                    bat 'tar.exe cf dist.zip dist' 
+                }
+            }
+        }
 
       }
 
-
+      post {
+        always {
+            archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
+        }
+    }
 }

@@ -1,21 +1,26 @@
 node{
-        stage"========^^^^^^ Clone sources ^^^^^^========"
-        git url: 'https://github.com/HamzaABDOULI/spring-boot-angular-11-mysql.git'
+
+    properties([
+    buildDiscarder(logRotator(daysToKeepStr: '3', numToKeepStr: '3')),
+    ])
+
+    stage"========^^^^^^ Clone sources ^^^^^^========"
+    git url: 'https://github.com/HamzaABDOULI/spring-boot-angular-11-mysql.git'
         
-        stage"Build SpringBoot Project"
-        echo "========^^^^^^ Start Building the SpringBoot project ^^^^^^========"
-        dir('spring-boot-server'){
-            bat "mvn install clean" 
-        }
+    stage"Build SpringBoot Project"
+    echo "========^^^^^^ Start Building the SpringBoot project ^^^^^^========"
+    dir('spring-boot-server'){
+        bat "mvn install clean" 
+    }
 
-        stage"BuildAngular Project"
-        echo "========^^^^^^ Start Building the Angular project ^^^^^^========"
-        dir('angular-11-client'){
-            bat 'npm install'
-            bat 'npm run ng -- build'
-            bat 'tar.exe cf dist.zip dist' 
-        }
+    stage"BuildAngular Project"
+    echo "========^^^^^^ Start Building the Angular project ^^^^^^========"
+    dir('angular-11-client'){
+        bat 'npm install'
+        bat 'npm run ng -- build'
+        bat 'tar.exe cf dist.zip dist' 
+    }
 
-        stage "Archive build output"
-        archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
+    stage "Archive build output"
+    archiveArtifacts artifacts: '**/*.jar, **/angular-11-client/dist.zip', onlyIfSuccessful: true
 }
