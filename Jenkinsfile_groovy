@@ -21,6 +21,7 @@ node{
                     readcounter = readcounter.toInteger() +1
                     def version= "Version" + readcounter
                     println(version)
+                    bat "mvn install clean" 
                     bat 'mvn package -Dartifactversion=' + "${version}"
                     writeFile(file: 'version.txt', text: readcounter.toString())
                 } 
@@ -30,14 +31,7 @@ node{
                     echo "Build and Package Completed" 
             }
     }
-       
-        
-    stage"Build SpringBoot Project"
-    echo "========^^^^^^ Start Building the SpringBoot project ^^^^^^========"
-    dir('spring-boot-server'){
-        bat "mvn install clean" 
-    }
-
+    
     stage"BuildAngular Project"
     echo "========^^^^^^ Start Building the Angular project ^^^^^^========"
     dir('angular-11-client'){
