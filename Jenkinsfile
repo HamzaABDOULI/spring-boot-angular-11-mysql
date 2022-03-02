@@ -28,6 +28,7 @@ pipeline {
                 echo "PATH = ${M2_HOME}/bin:${PATH}"
             }
         }
+
         stage('Build SpringBoot Project') {
             steps {
                 echo '========^^^^^^ Start Building the SpringBoot project ^^^^^^========'
